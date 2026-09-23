@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.guanlan.addmonitor</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/YOUR_USERNAME/guanlan/add_monitor.py</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/YOUR_USERNAME/guanlan</string>
+  <!-- 每 600 秒（10 分钟）一次。纯规则、不费 token。全🔴未变则不推、不刷屏。 -->
+  <key>StartInterval</key>
+  <integer>600</integer>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/tmp/guanlan_addmonitor.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/guanlan_addmonitor.err</string>
+</dict>
+</plist>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>观澜 · 决策台</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="观澜 — Trading 212 多账户决策台：持仓、技术面、期权墙、催化剂日历、组合风险与英国税务额度。" />
+<link rel="manifest" href="/static/manifest.json" />
+<link rel="apple-touch-icon" href="/static/icon-180.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/static/icon-192.png" />
+<meta name="theme-color" content="#f3eee5" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14120e" media="(prefers-color-scheme: dark)" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="观澜" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/static/app/app.css" />
+<script>
+  // theme before first paint (server prefs arrive a beat later)
+  try { const t = localStorage.getItem("guanlan-theme"); if (t && t !== "auto") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand" aria-label="观澜">
+    <span class="brand-mark">观澜</span><span class="brand-sub">决策台</span>
+  </div>
+  <nav id="tabs" class="tabs" role="tablist" aria-label="页面"></nav>
+  <div class="top-right">
+    <div id="clock" class="clock" aria-live="off"></div>
+    <div id="acct" class="seg acct" role="group" aria-label="账户"></div>
+    <button id="btn-search" class="search-btn" type="button" aria-label="搜索 (⌘K)"><span aria-hidden="true">⌕</span><span class="sb-t">搜索股票</span><kbd>⌘K</kbd></button>
+    <button id="btn-privacy" class="icon-btn" type="button" title="隐私模式：隐藏金额 (P)" aria-label="隐私模式">◐</button>
+    <button id="btn-theme" class="icon-btn" type="button" title="日 / 夜 (T)" aria-label="切换主题">☾</button>
+    <button id="btn-settings" class="icon-btn" type="button" title="设置" aria-label="设置">⚙</button>
+  </div>
+</header>
+
+<div id="err" class="err" hidden role="alert"></div>
+
+<section id="stats" class="stats" aria-label="账户总览">
+  <div class="stat" id="st-cost"><div class="st-l">总成本</div><div class="st-v money">—</div><div class="st-sub"></div></div>
+  <div class="stat" id="st-total"><div class="st-l">总价值</div><div class="st-v money">—</div><div class="st-sub"></div></div>
+  <div class="stat" id="st-cash"><div class="st-l">总现金</div><div class="st-v money">—</div><div class="st-sub"></div></div>
+  <div class="stat" id="st-today"><div class="st-l">今日收益</div><div class="st-v money">—</div><div class="st-sub"></div></div>
+  <div class="stat stat-eq" id="st-realized" tabindex="0" aria-describedby="bd-realized">
+    <div class="st-l">锁定收益 <span class="st-info" aria-hidden="true">ⓘ</span></div><div class="st-v money">—</div><div class="st-sub"></div>
+    <div class="st-breakdown" id="bd-realized" role="tooltip"></div>
+  </div>
+  <div class="st-op" aria-hidden="true">+</div>
+  <div class="stat stat-eq" id="st-unreal"><div class="st-l">浮动收益</div><div class="st-v money">—</div><div class="st-sub"></div></div>
+  <div class="st-op" aria-hidden="true">=</div>
+  <div class="stat stat-eq" id="st-alltime"><div class="st-l">总收益</div><div class="st-v money">—</div><div class="st-sub"></div></div>
+</section>
+
+<main>
+  <!-- ═════════ 盯盘 ═════════ -->
+  <section id="view-cockpit" class="view" role="tabpanel">
+    <div id="brief" class="brief" aria-label="今日要点"></div>
+    <div class="cockpit">
+      <div class="col-main">
+        <div class="card">
+          <div class="card-h">
+            <h2>持仓 <span id="hold-count" class="h-count"></span></h2>
+            <div class="seg hold-sort" role="group" aria-label="排序">
+              <button type="button" class="seg-btn" data-mode="sector">按板块</button>
+              <button type="button" class="seg-btn" data-mode="weight">按仓位</button>
+              <button type="button" class="seg-btn" data-mode="day">按涨跌</button>
+              <button type="button" class="seg-btn" data-mode="name">按代码</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table class="hold">
+              <thead><tr>
+                <th class="c-sym">代码</th><th class="c-wt">仓位</th><th class="c-spark">30 日</th><th class="c-px num">现价</th>
+                <th class="c-day num">今日</th><th class="c-range">日内区间</th><th class="c-tech" title="三个点 = 站上 MA20 / MA50 / MA200">技术面</th><th class="c-flags"></th>
+              </tr></thead>
+              <tbody id="hold-body"><tr><td colspan="8" class="empty">加载持仓…</td></tr></tbody>
+            </table>
+          </div>
+          <div class="card-foot muted">点一行 → 个股决策面板 · 技术面三点 = 站上 MA20 / MA50 / MA200 · 日内区间的竖线 = 昨收</div>
+        </div>
+
+        <div class="card">
+          <div class="card-h">
+            <h2>自选 <span id="watch-count" class="h-count"></span></h2>
+            <div class="watch-add">
+              <input id="watch-input" placeholder="加自选：代码或公司名，回车" autocomplete="off" spellcheck="false" aria-label="添加自选" />
+              <div id="watch-suggest" class="suggest" hidden></div>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table class="hold watch">
+              <thead><tr>
+                <th class="c-sym">代码</th><th class="c-wt"></th><th class="c-spark">30 日</th><th class="c-px num">现价</th>
+                <th class="c-day num">今日</th><th class="c-range">日内区间</th><th class="c-tech">技术面</th><th class="c-flags"></th>
+              </tr></thead>
+              <tbody id="watch-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <aside class="col-rail">
+        <div class="card">
+          <div class="card-h"><h2>大盘</h2><span class="card-sub">每 30 秒</span></div>
+          <div id="market-tiles" class="mkt-grid"></div>
+          <div id="market-macro" class="mkt-macro"></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h2>持仓地图</h2><span class="card-sub">面积 = 市值 · 颜色 = 今日</span></div>
+          <div id="map" class="map"></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h2>催化剂</h2><button type="button" class="link" data-goto="calendar">全部日历 →</button></div>
+          <div id="catalysts" class="catalysts"></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h2>监控信号</h2><span class="card-sub">tech_monitor · 30 分钟</span></div>
+          <div id="signals" class="signals"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ═════════ 风险 ═════════ -->
+  <section id="view-risk" class="view" role="tabpanel" hidden>
+    <div class="view-h">
+      <div><h1>组合风险</h1><p id="risk-asof" class="muted">加载中…</p></div>
+      <button type="button" class="btn btn-sm" data-reload="risk">重新计算</button>
+    </div>
+    <div id="risk-kpis" class="kpis"></div>
+    <div class="grid-2">
+      <div class="card"><div class="card-h"><h2>集中度</h2><span class="card-sub">同向暴露越高越脆</span></div><div id="risk-conc"></div></div>
+      <div class="card"><div class="card-h"><h2>谁在决定你的起伏</h2><span class="card-sub">仓位占比 → 波动贡献</span></div>
+        <div id="risk-contrib"></div><p id="risk-contrib-note" class="tk-hint"></p></div>
+    </div>
+    <div class="grid-2">
+      <div class="card"><div class="card-h"><h2>压力测试</h2><span class="card-sub">如果明天……</span></div><div id="risk-stress"></div></div>
+      <div class="card"><div class="card-h"><h2>相关性</h2><span class="card-sub">前 10 大持仓</span></div><div id="risk-corr"></div><p id="risk-corr-note" class="tk-hint"></p></div>
+    </div>
+    <div class="grid-2 wide-left">
+      <div class="card"><div class="card-h"><h2>收益曲线</h2><span class="card-sub">剔除入金影响 · 对比标普 / 纳指</span></div>
+        <div id="risk-nav" class="chart-box"></div><div id="risk-dd" class="chart-box"></div><p id="risk-nav-note" class="tk-hint"></p></div>
+      <div class="stack">
+        <div class="card"><div class="card-h"><h2>事件敞口</h2><span class="card-sub">财报前后波动最大</span></div><div id="risk-events"></div></div>
+        <div class="card"><div class="card-h"><h2>货币敞口</h2><span class="card-sub">英镑投资者持美元资产</span></div><div id="risk-ccy"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ 日历 · 新闻 ═════════ -->
+  <section id="view-calendar" class="view" role="tabpanel" hidden>
+    <div class="view-h"><div><h1>催化剂日历</h1><p class="muted">时间均为伦敦本地时间</p></div></div>
+    <div class="grid-2 wide-left">
+      <div class="card">
+        <div class="card-h"><h2>未来 45 天</h2>
+          <div class="seg" id="cal-filter" role="group" aria-label="筛选">
+            <button type="button" class="seg-btn" data-f="all">全部</button>
+            <button type="button" class="seg-btn" data-f="held">持仓财报</button>
+            <button type="button" class="seg-btn" data-f="watch">自选财报</button>
+            <button type="button" class="seg-btn" data-f="macro">宏观</button>
+          </div>
+        </div>
+        <div id="cal-list" class="cal-list"></div>
+        <p id="cal-note" class="tk-hint"></p>
+      </div>
+      <div class="card">
+        <div class="card-h"><h2>新闻</h2>
+          <label class="tg"><input type="checkbox" id="news-general" /> 含市场要闻</label>
+        </div>
+        <div id="news-chips" class="chips"></div>
+        <div id="news-list" class="news-list"><div class="muted pad">加载中…</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ 交易 · 税务 ═════════ -->
+  <section id="view-trades" class="view" role="tabpanel" hidden>
+    <div class="view-h"><div><h1>交易 · 税务</h1><p class="muted">挂单、提醒、成交记录与英国税年额度</p></div>
+      <button type="button" class="btn btn-sm" data-reload="trades">刷新</button></div>
+    <div class="grid-2 wide-left">
+      <div class="card"><div class="card-h"><h2>挂单</h2><span class="card-sub">所有账户 · 每分钟</span></div><div id="tr-orders"></div></div>
+      <div class="card"><div class="card-h"><h2>价格提醒</h2><span class="card-sub">在个股详情里添加</span></div><div id="tr-alerts"></div></div>
+    </div>
+    <div class="card"><div class="card-h"><h2>英国税年</h2><span class="card-sub">ISA 额度 · 资本利得免税额</span></div><div id="tr-tax"></div></div>
+    <div class="card"><div class="card-h"><h2>交易行为</h2><span class="card-sub">不评判，只照镜子</span></div><div id="tr-behaviour"></div></div>
+    <div class="card"><div class="card-h"><h2>成交记录</h2><span class="card-sub">点一行看该股详情</span></div><div id="tr-fills"><div class="muted pad">加载中…</div></div></div>
+  </section>
+</main>
+
+<aside id="drawer" class="drawer" hidden aria-label="个股详情">
+  <div class="drawer-scrim" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'}))"></div>
+  <div id="drawer-body" class="drawer-body" role="dialog" aria-modal="true"></div>
+</aside>
+
+<footer class="foot">
+  <span>观澜 · 数据仅供参考，不构成投资建议</span>
+  <span id="updated" class="num"></span>
+</footer>
+
+<script type="module" src="/static/app/main.js"></script>
+</body>
+</html>

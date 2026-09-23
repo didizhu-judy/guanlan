@@ -1,0 +1,94 @@
+[
+  {
+    "id": "cpi_may",
+    "date": "2026-06-10",
+    "time": "13:30",
+    "title": "🔥 美国 5 月 CPI",
+    "desc": "本周最大变量。软=收益率回落=高PE反弹；硬=二次下杀。重点看 core MoM。",
+    "tags": [
+      "macro",
+      "yields",
+      "ai"
+    ]
+  },
+  {
+    "id": "oracle_q4",
+    "date": "2026-06-10",
+    "time": "21:00",
+    "title": "Oracle 财报（盘后）",
+    "desc": "AI/云 capex 风向。强 cloud 指引利好 MU/HBM 叙事；弱则加深 AI capex 怀疑。",
+    "tags": [
+      "earnings",
+      "ai",
+      "mu",
+      "sndk"
+    ]
+  },
+  {
+    "id": "ppi_may",
+    "date": "2026-06-11",
+    "time": "13:30",
+    "title": "美国 5 月 PPI",
+    "desc": "通胀次要数据，确认 CPI 方向。",
+    "tags": [
+      "macro"
+    ]
+  },
+  {
+    "id": "adobe_q2",
+    "date": "2026-06-11",
+    "time": "21:00",
+    "title": "Adobe 财报（盘后）",
+    "desc": "软件/AI 应用风向。",
+    "tags": [
+      "earnings",
+      "ai"
+    ]
+  },
+  {
+    "id": "worldcup",
+    "date": "2026-06-11",
+    "time": "18:00",
+    "title": "🏆 FIFA 世界杯开赛",
+    "desc": "至 7/19。历史：比赛日交易量小幅下降、波动放大、注意力分散。影响有限但实在。",
+    "tags": [
+      "macro",
+      "liquidity"
+    ]
+  },
+  {
+    "id": "spcx_ipo",
+    "date": "2026-06-12",
+    "time": "14:30",
+    "title": "🔥 SpaceX IPO 上市",
+    "desc": "$1.77T 估值、$750 亿募资 = 史上最大 IPO。机构卖 AI 名腾仓 → MU/LITE 等承压；'破发 vs 一炮而红'决定市场风险偏好。",
+    "tags": [
+      "liquidity",
+      "ai",
+      "mu",
+      "lite"
+    ]
+  },
+  {
+    "id": "fomc_jun",
+    "date": "2026-06-17",
+    "time": "19:00",
+    "title": "🔥 FOMC 利率决议 + 点阵图",
+    "desc": "市场定价 98% 维持。真正的事件是 dot plot 和 Powell 发布会措辞。鸽派=高PE大反弹；鹰派=高估值科技续杀。",
+    "tags": [
+      "macro",
+      "yields",
+      "ai"
+    ]
+  },
+  {
+    "id": "fomc_presser",
+    "date": "2026-06-17",
+    "time": "19:30",
+    "title": "Powell 发布会",
+    "desc": "实际市场反应往往在发布会期间。",
+    "tags": [
+      "macro"
+    ]
+  }
+]

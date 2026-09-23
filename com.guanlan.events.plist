@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.guanlan.events</string>
+  <!-- 不带参数 = 同时跑 morning（每天 9:00 推送幂等，state 防重） + postevent（每小时 :05 检查30-90min前刚发生的事件） -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/YOUR_USERNAME/Library/guanlan/event_calendar.py</string>
+  </array>
+  <key>WorkingDirectory</key><string>/Users/YOUR_USERNAME/Library/guanlan</string>
+  <key>StartCalendarInterval</key>
+  <array>
+    <!-- 09:00 早报 -->
+    <dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+    <!-- 关键事件后 30-90min 内捕获：13:30 CPI/PPI → 14:35 推 -->
+    <!-- 14:30 SPCX IPO 开盘 → 15:35 -->
+    <!-- 19:00 FOMC → 20:05；19:30 发布会 → 20:35 -->
+    <!-- 21:00 财报 → 22:05 -->
+    <dict><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+    <dict><key>Hour</key><integer>15</integer><key>Minute</key><integer>35</integer></dict>
+    <dict><key>Hour</key><integer>20</integer><key>Minute</key><integer>5</integer></dict>
+    <dict><key>Hour</key><integer>20</integer><key>Minute</key><integer>35</integer></dict>
+    <dict><key>Hour</key><integer>22</integer><key>Minute</key><integer>5</integer></dict>
+  </array>
+  <key>RunAtLoad</key><false/>
+  <key>StandardOutPath</key><string>/tmp/guanlan_events.log</string>
+  <key>StandardErrorPath</key><string>/tmp/guanlan_events.err</string>
+</dict>
+</plist>

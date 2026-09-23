@@ -1,0 +1,53 @@
+# ---- secrets ----
+.env
+.env.*
+!.env.example
+
+# ---- runtime state & account data (per-user, never share) ----
+daily_totals*.json
+transactions_cache*.json
+orders_cache*.json
+dividends_cache*.json
+instruments_cache.json
+options_cache.json
+user_prefs.json
+price_log.json
+alert_queue.json
+monitor_state.json
+add_monitor_state.json
+crowding_state.json
+event_state.json
+korea_cache.json
+korea_leadlag.csv
+events.json
+*.json.tmp
+.desktop_widget_pos.json
+reports/
+backups/
+
+# ---- python ----
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# ---- macOS ----
+.DS_Store
+._*
+
+# ---- editor ----
+.vscode/
+.idea/
+*.swp
+
+# ---- build outputs ----
+widget-kit/build/
+widget-kit/DerivedData/
+widget-kit/*.xcodeproj/xcuserdata/
+release/
+dist/
+*.dmg
+icon.iconset/

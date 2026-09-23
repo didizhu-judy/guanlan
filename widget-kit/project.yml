@@ -1,0 +1,59 @@
+# xcodegen spec — generates T212Companion.xcodeproj.
+# Regenerate after editing:  cd widget-kit && xcodegen generate
+
+name: T212Companion
+options:
+  bundleIdPrefix: com.local
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: false
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    # Ad-hoc local signing — no Apple Developer account required.
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGNING_REQUIRED: "YES"
+    CODE_SIGNING_ALLOWED: "YES"
+    DEVELOPMENT_TEAM: ""
+    ENABLE_HARDENED_RUNTIME: "YES"
+
+targets:
+  # -------- Host app (the .app bundle that contains the widget) --------
+  T212Companion:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: T212Companion
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.local.T212Companion
+        PRODUCT_NAME: Guanlan-Widget
+        INFOPLIST_FILE: T212Companion/Info.plist
+        CODE_SIGN_ENTITLEMENTS: T212Companion/T212Companion.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: "NO"
+    dependencies:
+      - target: T212WidgetExtension
+        embed: true
+
+  # -------- Widget extension (the .appex inside the .app) --------
+  T212WidgetExtension:
+    type: app-extension
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: T212WidgetExtension
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.local.T212Companion.T212WidgetExtension
+        PRODUCT_NAME: T212WidgetExtension
+        INFOPLIST_FILE: T212WidgetExtension/Info.plist
+        CODE_SIGN_ENTITLEMENTS: T212WidgetExtension/T212WidgetExtension.entitlements
+        GENERATE_INFOPLIST_FILE: "NO"
+        SKIP_INSTALL: "YES"

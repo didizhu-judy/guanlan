@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D8756B8CBA338331932D4E8 /* T212WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 32B0F806760E7EF75AC674D5 /* T212WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0E3D7C317BE63B63E2A975CF /* T212Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69498186C223761660B87FF3 /* T212Snapshot.swift */; };
+		5DE6F0716B7804D47CF83138 /* T212CompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AD7E8630C8836A8BAE8F8 /* T212CompanionApp.swift */; };
+		7011FCAC1BDC8C91ACF1CA0D /* RefreshIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B993B29F62E0EEF9A89F05 /* RefreshIntent.swift */; };
+		921B98E616CC15A21C70D017 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA496C1C6CE8C1DB689A932C /* ContentView.swift */; };
+		9B1F33EA56B79A16DB8777FE /* T212WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1CF6F59C30D0BB2FE4022F /* T212WidgetView.swift */; };
+		A5882E7D7CBC941240E35145 /* T212Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9315876EAFB30A895656D33 /* T212Provider.swift */; };
+		B0EA4FC95DBE38570C0C1984 /* T212WidgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C667374C0F2321D686BDEC /* T212WidgetExtension.swift */; };
+		B3F1DF14CBEE954AF719DE4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD8B2756B7C3E71113B4F4EA /* Assets.xcassets */; };
+		CCA4BE38728DE6E9DCC27807 /* T212Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69498186C223761660B87FF3 /* T212Snapshot.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE89A1483CF49C36910CB3AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 499A15A57A0B714C64CB551E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5697E9AE97D2E08386B43F6;
+			remoteInfo = T212WidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8C362D035379FF90EB5D60DA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0D8756B8CBA338331932D4E8 /* T212WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0805D7CB2EBE30E349FDE8DE /* T212Companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = T212Companion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F151E58C1B55462F75BA077 /* T212WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = T212WidgetExtension.entitlements; sourceTree = "<group>"; };
+		32B0F806760E7EF75AC674D5 /* T212WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = T212WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C1CF6F59C30D0BB2FE4022F /* T212WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T212WidgetView.swift; sourceTree = "<group>"; };
+		48C667374C0F2321D686BDEC /* T212WidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T212WidgetExtension.swift; sourceTree = "<group>"; };
+		63ACF32D629BF6EF73860581 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		69498186C223761660B87FF3 /* T212Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T212Snapshot.swift; sourceTree = "<group>"; };
+		84CFBFDE792F29DF66DCD9D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		871AD7E8630C8836A8BAE8F8 /* T212CompanionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T212CompanionApp.swift; sourceTree = "<group>"; };
+		AA496C1C6CE8C1DB689A932C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B9315876EAFB30A895656D33 /* T212Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T212Provider.swift; sourceTree = "<group>"; };
+		C0B993B29F62E0EEF9A89F05 /* RefreshIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshIntent.swift; sourceTree = "<group>"; };
+		C401155F59DF332226E8AC72 /* T212Companion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = T212Companion.entitlements; sourceTree = "<group>"; };
+		FD8B2756B7C3E71113B4F4EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		18767067FF935EC132166F0D /* T212Companion */ = {
+			isa = PBXGroup;
+			children = (
+				FD8B2756B7C3E71113B4F4EA /* Assets.xcassets */,
+				AA496C1C6CE8C1DB689A932C /* ContentView.swift */,
+				84CFBFDE792F29DF66DCD9D3 /* Info.plist */,
+				C401155F59DF332226E8AC72 /* T212Companion.entitlements */,
+				871AD7E8630C8836A8BAE8F8 /* T212CompanionApp.swift */,
+			);
+			path = T212Companion;
+			sourceTree = "<group>";
+		};
+		894C26DEC4D4158071CAD3C7 /* T212WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				63ACF32D629BF6EF73860581 /* Info.plist */,
+				C0B993B29F62E0EEF9A89F05 /* RefreshIntent.swift */,
+				B9315876EAFB30A895656D33 /* T212Provider.swift */,
+				0F151E58C1B55462F75BA077 /* T212WidgetExtension.entitlements */,
+				48C667374C0F2321D686BDEC /* T212WidgetExtension.swift */,
+				3C1CF6F59C30D0BB2FE4022F /* T212WidgetView.swift */,
+			);
+			path = T212WidgetExtension;
+			sourceTree = "<group>";
+		};
+		8AA163D7C90A502146C920AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0805D7CB2EBE30E349FDE8DE /* T212Companion.app */,
+				32B0F806760E7EF75AC674D5 /* T212WidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		99C9C6590DCA27A9C18FEBEC = {
+			isa = PBXGroup;
+			children = (
+				DCDCBA3C9A065127F465739B /* Shared */,
+				18767067FF935EC132166F0D /* T212Companion */,
+				894C26DEC4D4158071CAD3C7 /* T212WidgetExtension */,
+				8AA163D7C90A502146C920AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DCDCBA3C9A065127F465739B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				69498186C223761660B87FF3 /* T212Snapshot.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7C0FDDA76321840383405D5C /* T212Companion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F987DB111C72E280570E5CF /* Build configuration list for PBXNativeTarget "T212Companion" */;
+			buildPhases = (
+				523C51CAE6F11CB7193F79BA /* Sources */,
+				6F81415333422CEA2C225D27 /* Resources */,
+				8C362D035379FF90EB5D60DA /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				381F254C1396704121A7351F /* PBXTargetDependency */,
+			);
+			name = T212Companion;
+			packageProductDependencies = (
+			);
+			productName = T212Companion;
+			productReference = 0805D7CB2EBE30E349FDE8DE /* T212Companion.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C5697E9AE97D2E08386B43F6 /* T212WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49778D2BE9F1042E835F4573 /* Build configuration list for PBXNativeTarget "T212WidgetExtension" */;
+			buildPhases = (
+				EDA7C39ACD1437E6F1990917 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = T212WidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = T212WidgetExtension;
+			productReference = 32B0F806760E7EF75AC674D5 /* T212WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		499A15A57A0B714C64CB551E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					7C0FDDA76321840383405D5C = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+					C5697E9AE97D2E08386B43F6 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 8C09FFBD065E7BAA886D956D /* Build configuration list for PBXProject "T212Companion" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 99C9C6590DCA27A9C18FEBEC;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 8AA163D7C90A502146C920AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7C0FDDA76321840383405D5C /* T212Companion */,
+				C5697E9AE97D2E08386B43F6 /* T212WidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6F81415333422CEA2C225D27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3F1DF14CBEE954AF719DE4C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		523C51CAE6F11CB7193F79BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				921B98E616CC15A21C70D017 /* ContentView.swift in Sources */,
+				5DE6F0716B7804D47CF83138 /* T212CompanionApp.swift in Sources */,
+				0E3D7C317BE63B63E2A975CF /* T212Snapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA7C39ACD1437E6F1990917 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7011FCAC1BDC8C91ACF1CA0D /* RefreshIntent.swift in Sources */,
+				A5882E7D7CBC941240E35145 /* T212Provider.swift in Sources */,
+				CCA4BE38728DE6E9DCC27807 /* T212Snapshot.swift in Sources */,
+				B0EA4FC95DBE38570C0C1984 /* T212WidgetExtension.swift in Sources */,
+				9B1F33EA56B79A16DB8777FE /* T212WidgetView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		381F254C1396704121A7351F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C5697E9AE97D2E08386B43F6 /* T212WidgetExtension */;
+			targetProxy = CE89A1483CF49C36910CB3AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1617F2ECFB4EC8285A554983 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = T212Companion/T212Companion.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = T212Companion/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.T212Companion;
+				PRODUCT_NAME = "Guanlan-Widget";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		20A353E4560E2075888E8F13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		4414B45FD77B2B732ED58370 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		9F20B428A7E67608A9E264CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = T212WidgetExtension/T212WidgetExtension.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = T212WidgetExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.T212Companion.T212WidgetExtension;
+				PRODUCT_NAME = T212WidgetExtension;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B30F243F56C133163289DCF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = T212WidgetExtension/T212WidgetExtension.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = T212WidgetExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.T212Companion.T212WidgetExtension;
+				PRODUCT_NAME = T212WidgetExtension;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B5EEBF7F03E73BC83220B744 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = T212Companion/T212Companion.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = T212Companion/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.T212Companion;
+				PRODUCT_NAME = "Guanlan-Widget";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49778D2BE9F1042E835F4573 /* Build configuration list for PBXNativeTarget "T212WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F20B428A7E67608A9E264CE /* Debug */,
+				B30F243F56C133163289DCF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8C09FFBD065E7BAA886D956D /* Build configuration list for PBXProject "T212Companion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20A353E4560E2075888E8F13 /* Debug */,
+				4414B45FD77B2B732ED58370 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9F987DB111C72E280570E5CF /* Build configuration list for PBXNativeTarget "T212Companion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5EEBF7F03E73BC83220B744 /* Debug */,
+				1617F2ECFB4EC8285A554983 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 499A15A57A0B714C64CB551E /* Project object */;
+}

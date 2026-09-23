@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>T212 Widget</title>
+<style>
+  :root {
+    --bg: #0e1117; --panel: #161b22; --panel-2: #1c232c;
+    --border: #2a3340; --text: #e6edf3; --muted: #8b949e;
+    --green: #3fb950; --red: #f85149; --accent: #58a6ff; --amber: #d29922;
+  }
+  * { box-sizing: border-box; -webkit-user-select: none; user-select: none; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+               font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                            "PingFang SC", sans-serif;
+               font-size: 12px; height: 100vh; overflow: hidden;
+               -webkit-font-smoothing: antialiased; }
+  body { display: flex; flex-direction: column; }
+  .pos { color: var(--green); } .neg { color: var(--red); }
+  .muted { color: var(--muted); }
+  .tabnum { font-variant-numeric: tabular-nums; }
+
+  /* ---------- Header ---------- */
+  .head { padding: 11px 14px; background: var(--panel);
+          border-bottom: 1px solid var(--border);
+          display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .head .cell .label { font-size: 9px; color: var(--muted);
+                       letter-spacing: 0.6px; text-transform: uppercase; }
+  .head .cell .val { font-size: 15px; font-weight: 600; margin-top: 2px;
+                     font-variant-numeric: tabular-nums; }
+  .head .cell .sub { font-size: 10px; color: var(--muted); margin-top: 1px;
+                     font-variant-numeric: tabular-nums; }
+
+  /* ---------- Position rows ---------- */
+  .positions { flex: 1; overflow-y: auto; }
+  .p-row { padding: 8px 14px; border-bottom: 1px solid rgba(255,255,255,0.05);
+           display: grid; grid-template-columns: 1fr auto;
+           column-gap: 12px; align-items: center; cursor: default; }
+  .p-row:last-child { border-bottom: none; }
+  .p-row:hover { background: rgba(255,255,255,0.02); }
+
+  .p-left  { min-width: 0; overflow: hidden; }
+  .p-right { text-align: right; min-width: 0; }
+  .p-sym   { font-weight: 600; font-size: 13px; letter-spacing: 0.2px; }
+  .p-name  { font-size: 10px; color: var(--muted); margin-top: 1px;
+             white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .p-price-line { display: flex; gap: 8px; justify-content: flex-end;
+                  align-items: baseline; font-variant-numeric: tabular-nums; }
+  .p-price { font-size: 13px; font-weight: 600; }
+  .p-pct   { font-size: 11px; font-weight: 500; }
+  .p-pnl-line { display: flex; gap: 10px; justify-content: flex-end;
+                font-size: 10px; margin-top: 2px;
+                font-variant-numeric: tabular-nums; }
+  .p-pnl-line .lbl { color: var(--muted); margin-right: 2px; }
+
+  /* ---------- Footer ---------- */
+  .foot { padding: 8px 14px; border-top: 1px solid var(--border);
+          background: var(--panel); display: flex;
+          justify-content: space-between; align-items: center;
+          font-size: 10px; color: var(--muted); }
+  .foot .btn { background: var(--panel-2); border: 1px solid var(--border);
+               color: var(--text); border-radius: 5px; padding: 4px 9px;
+               font-size: 11px; cursor: pointer; -webkit-user-select: none;
+               font-family: inherit; }
+  .foot .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .foot .brand { font-size: 10px; letter-spacing: 0.5px;
+                  font-weight: 500; opacity: 0.55; white-space: nowrap; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="cell">
+    <div class="label">今日</div>
+    <div class="val tabnum" id="h-today">—</div>
+    <div class="sub tabnum" id="h-today-pct"></div>
+  </div>
+  <div class="cell">
+    <div class="label">浮动</div>
+    <div class="val tabnum" id="h-unreal">—</div>
+    <div class="sub tabnum" id="h-unreal-pct"></div>
+  </div>
+  <div class="cell">
+    <div class="label">总收益</div>
+    <div class="val tabnum" id="h-alltime">—</div>
+    <div class="sub tabnum" id="h-alltime-pct"></div>
+  </div>
+</div>
+
+<div class="positions" id="positions"></div>
+
+<div class="foot">
+  <span id="updated" class="muted">尚未同步</span>
+  <span class="muted">·</span>
+  <span id="alerts"><span class="amber">⚡ 0</span></span>
+  <span style="flex:1"></span>
+  <span class="brand muted">观澜 &nbsp;v0.1</span>
+  <span style="flex:1"></span>
+  <button class="btn" id="btn-open">打开 Dashboard</button>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt = (v, dp = 2) => (v == null || isNaN(v)) ? "—" : Number(v).toLocaleString(
+  undefined, { minimumFractionDigits: dp, maximumFractionDigits: dp });
+const fmt0 = v => (v == null || isNaN(v)) ? "—" : Number(v).toLocaleString(
+  undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+const sign = v => v > 0 ? "+" : "";
+const cls  = v => v > 0 ? "pos" : v < 0 ? "neg" : "";
+const SYM  = { gbp: "£", usd: "$", eur: "€" };
+
+function setPnlCell(amtId, pctId, amt, pct, sym) {
+  const a = $(amtId), p = $(pctId);
+  if (amt == null || isNaN(amt)) {
+    a.textContent = "—"; a.className = "val tabnum";
+    p.textContent = "";  p.className = "sub tabnum";
+    return;
+  }
+  const c = cls(amt);
+  a.textContent = sign(amt) + sym + fmt(amt);
+  a.className   = "val tabnum " + c;
+  if (pct != null && !isNaN(pct)) {
+    p.textContent = sign(pct) + fmt(pct) + "%";
+    p.className   = "sub tabnum " + c;
+  } else { p.textContent = ""; p.className = "sub tabnum"; }
+}
+
+function shortTicker(t) {
+  const m = (t || "").match(/^[A-Z]+/);
+  return m ? m[0] : (t || "");
+}
+
+async function tick() {
+  // ---- snapshot ----
+  let snap = null;
+  try {
+    const r = await fetch("/api/snapshot");
+    if (!r.ok) {
+      // Surface the actual HTTP code (429 = T212 限流, 500 = server bug, etc.)
+      const body = await r.text().catch(() => "");
+      throw new Error(`HTTP ${r.status} ${body.slice(0, 80)}`);
+    }
+    snap = await r.json();
+  } catch (e) {
+    $("updated").textContent = "⚠ " + (e.message || "未连接");
+    return;
+  }
+  const s   = snap.stats || {};
+  const cur = (snap.info?.currencyCode || "").toLowerCase();
+  const sym = SYM[cur] || "";
+
+  setPnlCell("h-today",   "h-today-pct",   s.todayPnl,        s.todayPnlPct);
+  setPnlCell("h-unreal",  "h-unreal-pct",  s.unrealizedPnl,   s.unrealizedPnlPct);
+  setPnlCell("h-alltime", "h-alltime-pct", s.allTimePnl,      s.allTimePnlPct);
+
+  // Re-bind sym onto setPnlCell calls (since it captures sym via closure of tick scope)
+  // ... actually the function param `sym` shadows; let me just pass it.
+  // (The DOM already updated above; need to redo with sym.)
+  ["h-today","h-unreal","h-alltime"].forEach((idA, i) => {
+    const idP = ["h-today-pct","h-unreal-pct","h-alltime-pct"][i];
+    const amt = [s.todayPnl, s.unrealizedPnl, s.allTimePnl][i];
+    const pct = [s.todayPnlPct, s.unrealizedPnlPct, s.allTimePnlPct][i];
+    setPnlCell(idA, idP, amt, pct, sym);
+  });
+
+  // ---- positions ----
+  const positions = snap.positions || [];
+  $("positions").innerHTML = positions.map(p => {
+    const short  = shortTicker(p.ticker);
+    const ls     = SYM[(p.currency || "").toLowerCase()] || "";
+    const dpct   = p.dayChangePct;
+    const dayPnl = (dpct != null && p.marketValue) ? p.marketValue * dpct / 100 : null;
+    return `<div class="p-row">
+      <div class="p-left">
+        <div class="p-sym">${short}</div>
+        <div class="p-name">${(p.name || "").replace(/</g,"&lt;")}</div>
+      </div>
+      <div class="p-right">
+        <div class="p-price-line">
+          <span class="p-price">${ls}${fmt(p.currentPrice)}</span>
+          <span class="p-pct ${cls(dpct)}">${
+            dpct == null ? "—" : sign(dpct) + fmt(dpct) + "%"
+          }</span>
+        </div>
+        <div class="p-pnl-line">
+          ${dayPnl == null ? "" :
+            `<span><span class="lbl">日</span><span class="${cls(dayPnl)}">${sign(dayPnl)}${sym}${fmt0(dayPnl)}</span></span>`
+          }
+          ${p.ppl == null ? "" :
+            `<span><span class="lbl">浮</span><span class="${cls(p.ppl)}">${sign(p.ppl)}${sym}${fmt0(p.ppl)}</span></span>`
+          }
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+
+  // ---- alerts ----
+  try {
+    const r = await fetch("/api/alerts");
+    if (r.ok) {
+      const d = await r.json();
+      const n = (d.alerts || []).length;
+      $("alerts").innerHTML = n > 0
+        ? `<span style="color:var(--amber)">⚡ ${n} 活跃异动</span>`
+        : `<span class="muted">⚡ 0</span>`;
+    }
+  } catch (e) { /* ignore */ }
+
+  $("updated").textContent = "更新 " + new Date().toLocaleTimeString();
+}
+
+$("btn-open").addEventListener("click", () => {
+  // Navigate to dashboard URL — host (popover) will catch this special URL.
+  // Simpler: just open new tab/window via location. The launcher .app handles it.
+  window.location.href = "t212://open-dashboard";
+});
+
+// Surface ANY uncaught JS error in the footer so silent failures in WKWebView
+// don't leave us staring at an empty widget.
+window.addEventListener("error", (ev) => {
+  $("updated").textContent = "⚠ JS: " + (ev.message || ev.error || "unknown");
+});
+window.addEventListener("unhandledrejection", (ev) => {
+  $("updated").textContent = "⚠ promise: " + (ev.reason?.message || ev.reason || "unknown");
+});
+
+tick().catch(e => {
+  $("updated").textContent = "⚠ tick: " + (e?.message || e);
+});
+setInterval(() => {
+  tick().catch(e => {
+    $("updated").textContent = "⚠ tick: " + (e?.message || e);
+  });
+}, 15000);
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.guanlan.techmonitor</string>
+
+  <!-- 每次运行：用 venv 的 python 跑 tech_monitor.py（默认 = 跑一次） -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/YOUR_USERNAME/guanlan/tech_monitor.py</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/YOUR_USERNAME/guanlan</string>
+
+  <!-- 每 1800 秒（30 分钟）跑一次。只在"刚破"那一刻推一次，所以盘外空跑也无害。 -->
+  <key>StartInterval</key>
+  <integer>1800</integer>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/guanlan_techmonitor.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/guanlan_techmonitor.err</string>
+</dict>
+</plist>

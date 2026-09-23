@@ -1,0 +1,18 @@
+{
+  "name": "观澜",
+  "short_name": "观澜",
+  "description": "观澜 · Trading 212 实盘面板",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#0e1117",
+  "background_color": "#0e1117",
+  "categories": ["finance", "productivity"],
+  "icons": [
+    { "src": "/static/icon-192.png",  "sizes": "192x192",  "type": "image/png" },
+    { "src": "/static/icon-512.png",  "sizes": "512x512",  "type": "image/png" },
+    { "src": "/static/icon-512.png",  "sizes": "512x512",  "type": "image/png", "purpose": "maskable" },
+    { "src": "/static/icon-1024.png", "sizes": "1024x1024","type": "image/png" }
+  ]
+}
