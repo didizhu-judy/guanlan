@@ -26,6 +26,8 @@
 
 ---
 
+> **原作与致谢**：观澜第一版（v0.1：本地看板、菜单栏、桌面挂件、通知中心组件，以及名字和图标）由 [**@Fei-Ni**](https://github.com/Fei-Ni) 创作。本仓库在此基础上继续开发——飞书技术监控脚本和 v2「决策台」（多账户、组合风险、催化剂日历、英国税年额度等）为后续新增。原作以 MIT 协议发布，其版权声明保留在 [LICENSE](LICENSE) 中。
+
 ## 🆕 v2 · 决策台（2026-09）
 
 完整面板重写为「决策台」：少盯盈亏跳动，多看做决定真正需要的信息。
@@ -250,6 +252,7 @@ Medium / Large 内嵌「刷新」按钮（AppIntent 驱动），点一下立即�
 
 ## 九、致谢与缘起
 
+- **原作**：观澜第一版由 [@Fei-Ni](https://github.com/Fei-Ni) 创作并以 MIT 协议发布，本仓库是在其基础上的延续开发。名字、图标和四种形态的整体设计都出自原作。
 - **名字**：取自朱熹《观书有感》「为有源头活水来」与岭南古镇「观澜」。希望这只仪表盘也能成为你看市场的一汪活水。
 - **图标**：金牛踏浪，箭头穿云——希望牛市常在，也希望你穿越波澜。
 - **灵感**：感谢 Trading 212 提供 API，感谢 Codex 让本地 AI 成为可能，感谢曾经用 Bloomberg Terminal 把屏幕填得满满的所有量化人。
@@ -266,11 +269,11 @@ Medium / Large 内嵌「刷新」按钮（AppIntent 驱动），点一下立即�
 <br/>
 <sub>用 ❤️ 与 SwiftUI / PyObjC / FastAPI 砌成 · 2026</sub>
 <br/>
-<sub><b>观澜  v0.1</b></sub>
+<sub><b>观澜  v2</b> · 原作 v0.1 由 <a href="https://github.com/Fei-Ni">@Fei-Ni</a> 创作</sub>
 </div>
 
 <a id="license"></a>
 
 ## License
 
-MIT © 2026
+MIT · 原作 © 2026 [Fei-Ni](https://github.com/Fei-Ni) · v2 改动 © 2026 观澜 v2 contributors —— 全文见 [LICENSE](LICENSE)

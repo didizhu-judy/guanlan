@@ -28,6 +28,8 @@
 
 ---
 
+> **Credits**: The first version of Guānlán (v0.1 — the local dashboard, menu-bar item, desktop widget and Notification Center widget, plus the name and icon) was created by [**@Fei-Ni**](https://github.com/Fei-Ni). This repository continues from it: the Feishu technical monitors and the v2 decision desk (multi-account, portfolio risk, catalyst calendar, UK tax-year gauges, …) were added later. The original was released under the MIT License; its copyright notice is kept in [LICENSE](LICENSE).
+
 ## 🆕 v2 · Decision desk (2026-09)
 
 The full dashboard was rebuilt as a *decision desk*: less P&L tick-watching, more of what a decision actually needs.
@@ -252,6 +254,7 @@ If you're worried about leaking API keys, there's a [credential self-check list]
 
 ## 9. Why the name?
 
+- **Original author**: the first version of Guānlán was created by [@Fei-Ni](https://github.com/Fei-Ni) and released under the MIT License; this repository is a continuation of that work. The name, the icon and the four-surface design all come from the original.
 - **观澜 (Guānlán)** literally means "to watch the waves". The phrase comes from Zhu Xi's *Reflections on Reading*, where fresh water at the source keeps a pond clear. The hope: this dashboard becomes the fresh water in your market-watching habit.
 - **The icon**: a golden bull walking through waves, an arrow piercing the clouds — wishing you a bull market, and the calm to cross any wave.
 - **Inspiration**: thanks to Trading 212 for the API, to Codex for making local AI possible, and to every quant who has ever filled their monitors with Bloomberg Terminal.
@@ -268,11 +271,11 @@ If you're worried about leaking API keys, there's a [credential self-check list]
 <br/>
 <sub>Built with ❤️, SwiftUI, PyObjC, FastAPI · 2026</sub>
 <br/>
-<sub><b>观澜  v0.1</b></sub>
+<sub><b>观澜  v2</b> · original v0.1 by <a href="https://github.com/Fei-Ni">@Fei-Ni</a></sub>
 </div>
 
 <a id="license"></a>
 
 ## License
 
-MIT © 2026
+MIT · original © 2026 [Fei-Ni](https://github.com/Fei-Ni) · v2 changes © 2026 观澜 v2 contributors — see [LICENSE](LICENSE)
